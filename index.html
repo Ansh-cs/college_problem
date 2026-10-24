@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Campus Saathi AI - Smart Campus Issue Reporting & QR Ticket System</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Top Demo & QR Banner -->
+  <div class="demo-banner no-print">
+    <div class="demo-banner-content">
+      <div class="demo-banner-text">
+        <span>⚡ <strong>Quick Access:</strong> Scan QR code from mobile to raise tickets, or run the official live demo scenario!</span>
+      </div>
+      <div class="demo-banner-actions">
+        <button class="banner-btn" onclick="openQRPosterModal()">📷 Campus QR Poster</button>
+        <button class="banner-btn" onclick="startDemoScenario()">▶ Run Demo Scenario</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar no-print">
+    <div class="nav-container">
+      <div class="brand" onclick="switchTab('home')">
+        <div class="brand-icon">🎓</div>
+        <div>
+          <div class="brand-title">
+            <span>CAMPUS SAATHI AI</span>
+            <span class="brand-badge">PROTOTYPE</span>
+          </div>
+          <div class="brand-tagline">Smart Campus Issue Reporting & Management System</div>
+        </div>
+      </div>
+
+      <ul class="nav-menu">
+        <li class="nav-item active" data-tab="home" onclick="switchTab('home')">
+          <span>🏠 Home</span>
+        </li>
+        <li class="nav-item" data-tab="report" onclick="switchTab('report')">
+          <span>📝 Report Issue</span>
+        </li>
+        <li class="nav-item" data-tab="qr-report" onclick="switchTab('qr-report')">
+          <span>📱 QR Scan Form</span>
+        </li>
+        <li class="nav-item" data-tab="issues" onclick="switchTab('issues')">
+          <span>📋 Issue List</span>
+        </li>
+        <li class="nav-item" data-tab="admin" onclick="switchTab('admin')">
+          <span>🛡️ Admin Dashboard</span>
+          <span id="nav-urgent-badge" class="nav-badge danger" style="display: none;">0</span>
+        </li>
+        <li class="nav-item" data-tab="assistant" onclick="switchTab('assistant')">
+          <span>🤖 Campus FAQ / AI Saathi</span>
+        </li>
+        
+        <!-- Authentication Pill Slot -->
+        <li id="navbar-auth-slot"></li>
+
+        <li>
+          <button class="demo-pill-btn" onclick="openQRPosterModal()">
+            <span>📷 QR Code</span>
+          </button>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Main Application Body with Modular Views -->
+  <main class="main-content">
+    
+    <!-- View: Home -->
+    <div id="view-home" class="app-view"></div>
+
+    <!-- View: Report Form (Standard Web Form) -->
+    <div id="view-report" class="app-view" style="display: none;"></div>
+
+    <!-- View: QR Scan Form (Full Student College Details + Problem) -->
+    <div id="view-qr-report" class="app-view" style="display: none;"></div>
+
+    <!-- View: Issue Directory & Tracking -->
+    <div id="view-issues" class="app-view" style="display: none;"></div>
+
+    <!-- View: Admin Dashboard -->
+    <div id="view-admin" class="app-view" style="display: none;"></div>
+
+    <!-- View: Campus Saathi AI FAQ & Assistant -->
+    <div id="view-assistant" class="app-view" style="display: none;"></div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="no-print" style="background: #ffffff; border-top: 1px solid var(--border); padding: 1.5rem 1.25rem; margin-top: auto; text-align: center; font-size: 0.8rem; color: var(--text-muted);">
+    <div style="max-width: 1280px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem;">
+      <div>
+        <strong>Campus Saathi AI</strong> • Smart Campus Issue Reporting & QR Management System
+      </div>
+      <div>
+        Student Authentication • Mobile QR Code Poster • Rule-Based AI Prioritization
+      </div>
+      <div style="display: flex; gap: 1rem;">
+        <a href="javascript:void(0)" onclick="openAuthModal('login')" style="color: var(--primary); text-decoration: none; font-weight: 600;">Login / Register</a>
+        <a href="javascript:void(0)" onclick="openQRPosterModal()" style="color: var(--primary); text-decoration: none; font-weight: 600;">Campus QR Code</a>
+        <a href="javascript:void(0)" onclick="resetToSampleData()" style="color: #ef4444; text-decoration: none; font-weight: 600;">Reset Demo Data</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast Notification Container -->
+  <div id="toast-container" class="toast-container"></div>
+
+  <!-- QR Code Library (Zero Dependency) -->
+  <script src="qrcode.min.js"></script>
+
+  <!-- Core Logic Script -->
+  <script src="app.js"></script>
+</body>
+</html>
